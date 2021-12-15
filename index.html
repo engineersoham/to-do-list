@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To do list</title>
+
+    <style>
+
+        body{
+            background-color: rgb(239, 236, 241);
+        }
+
+        div{
+
+            width: 500px;
+            height: 100px;
+            margin: 100px auto;
+            text-align: center;
+            box-shadow: 0 0 20px rgb(151, 15, 15);
+            padding: 10px;
+            
+            background-color: rgb(90, 108, 214);
+
+
+        }
+    </style>
+
+    <script>
+        function fncreateElement() {
+
+        var inputvalue = document.getElementById("i1").value;
+
+        if(inputvalue=="") {
+            alert("plz enter some text")
+            return
+
+        }else{
+
+           //create new "p" element
+        var pRef = document.createElement("span");
+           pRef.style.color = "black";
+           pRef.style.marginRight = "10px";
+           pRef.style.marginTop = "20px";
+           pRef.append(inputvalue)
+
+            
+           var btnedit = document.createElement("button");
+            btnedit.innerText="Edit"
+            btnedit.style.marginRight = "10px";
+            btnedit.style.marginTop = "20px";
+
+            
+
+            var btndelete = document.createElement("button");
+            btndelete.innerText="delete"
+            btndelete.style.marginTop = "20px";
+
+            
+
+            btnedit.addEventListener('click', function() {pRef.contentEditable = true;})
+            
+
+           
+            btndelete.addEventListener('click', function() {pRef.remove();})
+            btndelete.addEventListener('click', function() {btnedit.remove();})
+            btndelete.addEventListener('click', function()  {btndelete.remove();})
+
+            var br = document.createElement('br')
+
+          document.querySelector('div').appendChild(pRef);
+          document.querySelector('div').appendChild(btnedit);
+          document.querySelector('div').appendChild(btndelete);
+          document.querySelector('div').appendChild(br);
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <div>
+       Enter Text: <input type="text" id="i1" />
+        <button onclick="fncreateElement()">Add new Element</button> <br>
+
+    </div>
+
+</body>
+</html>
